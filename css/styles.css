@@ -5,7 +5,7 @@
     --color-dark: #1A415C; /* Texto Escuro/Fundo do Footer */
     --color-light: #F8F9FA; /* Fundo Claro (body e seções leves) */
     --color-text-dark: #212529; /* Cor do texto principal */
-    --color-text-light: #E0E0E0; /* Cor do texto claro */
+    --color-text-light: #ffffff; /* Cor do texto claro */
     --color-accessible-hero-text: #212529; /* Nuevo color para texto sobre fondo secondary */
 }
 
@@ -63,7 +63,7 @@ section {
     font-weight: 700;
     text-align: center;
     margin-bottom: 50px;
-    color: var(--color-primary);
+    color: var(--color-light);
 }
 
 /* --- Tipografia Responsiva (Garante bom tamanho em todas as telas) --- */
@@ -133,12 +133,12 @@ section {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 0.5rem;
-   color: var(--color-text-light);
+   color: var(--color-light);
 }
 
 .hero-subtitle {
     font-size: 1.25rem;
-    font-weight: 400;
+    font-weight: 600;
     margin-bottom: 1.5rem;
     color: var(--color-text-light);
 }
@@ -150,7 +150,7 @@ section {
 
 .hero-badge {   
     background: var(--color-primary);
-    color: var(--color-text-light);
+    color: var(--color-light);
     padding: 0.25rem 0.75rem;
     border-radius: 50px;
     font-size: 0.85rem;
@@ -162,6 +162,7 @@ section {
 
 .description-text {
     font-size: 1.1rem;
+     font-weight: 500;
     color: var(--color-light);
 }
 
