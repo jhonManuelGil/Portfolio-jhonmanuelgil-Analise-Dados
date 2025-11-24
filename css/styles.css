@@ -1,0 +1,555 @@
+/* Paleta de Cores Executivas e Cores da Imagem de Referência */
+:root {
+    --color-primary: #1E4D6E; /* Azul Escuro Executivo (Para botões e títulos) */
+    --color-secondary: #588B97; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
+    --color-dark: #1A415C; /* Texto Escuro/Fundo do Footer */
+    --color-light: #F8F9FA; /* Fundo Claro (body e seções leves) */
+    --color-text-dark: #212529; /* Cor do texto principal */
+    --color-text-light: #E0E0E0; /* Cor do texto claro */
+    --color-accessible-hero-text: #212529; /* Nuevo color para texto sobre fondo secondary */
+}
+
+/* --- Estilos Gerais --- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-light);
+    padding-top: 56px; 
+}
+
+
+::-webkit-scrollbar {
+    width: 12px; 
+    height: 12px; 
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-light); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    
+    background: var(--color-dark); 
+    border-radius: 10px;
+    border: 3px solid var(--color-light); 
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    
+    background: var(--color-primary); 
+}
+/* ============== section =========================================== */
+section {
+    padding: 80px 0;
+}
+
+.bg-dark-custom {
+    background-color: var(--color-dark);
+}
+
+.bg-light-custom {
+    background-color: var(--color-light);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 50px;
+    color: var(--color-primary);
+}
+
+/* --- Tipografia Responsiva (Garante bom tamanho em todas as telas) --- */
+/* Aumenta o tamanho da fonte em telas maiores (Desktop) */
+@media (min-width: 992px) {
+    .hero-title {
+        font-size: 3.5rem !important; 
+    }
+    .section-title {
+        font-size: 3rem;
+    }
+}
+
+/* --- Navbar --- */
+.custom-navbar {
+    background-color: #1A415C;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand, .nav-link {
+    color: var(--color-light) !important;
+    font-weight: 800;
+   
+}
+
+.nav-link:hover {
+    color: #588B97 !important;
+    
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.navbar-toggler-icon {
+    filter: brightness(0) invert(1); /* Deixa o ícone do toggler branco */
+    color: var(--color-light);
+}
+
+/* --- Hero Section (Inspirada na Imagem de Fundo) --- */
+
+
+.hero-section {
+    /* Mantenemos tus estilos de fondo y altura mínima */
+    background-color: var(--color-secondary);
+    color: var(--color-light); 
+    min-height: 100vh;
+    
+    /* Configuración de Flexbox para centralización total */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente el contenedor principal */
+    
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center; /* Centra el texto dentro del bloque */
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+}
+
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+   color: var(--color-text-light);
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-light);
+}
+
+.hero-badge,
+.hero-section .btn {
+    display: inline-block;
+}
+
+.hero-badge {   
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+
+.description-text {
+    font-size: 1.1rem;
+    color: var(--color-light);
+}
+
+.btn-primary-custom {
+    color: var(--color-light);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    font-weight: 600;
+}
+
+.btn-primary-custom:hover {
+    background-color: #1a415c;
+    border-color: #1a415c;
+    color: var(--color-secondary);
+}
+
+.btn-outline-light-custom {
+    color: var(--color-light);
+    border-color: var(--color-light);
+    font-weight: 600;
+}
+
+.btn-outline-light-custom:hover {
+    background-color: var(--color-light);
+    color: var(--color-primary);
+}
+
+/* Indicador de rolagem */
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: var(--color-primary);
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+@media (max-width: 540px) {
+    .description-text {
+    font-size: 1rem;
+    font-weight: 400;
+    }
+
+}
+
+/* Layout responsivo para (flecha) que indica o scroll  */
+@media (max-width: 454px) {
+   .btn-outline-light-custom, .btn-primary-custom {
+        font-size: 13px;
+    }
+    
+    .hero-title {
+    font-size: 2rem;
+    }
+
+    .description-text {
+    font-size: 0.9rem;
+    }
+
+}
+
+/* Links Sociais no Hero (Lado Esquerdo, Inspirado na Imagem) */
+.social-links-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 20;
+}
+
+.social-icon-hero {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--color-dark); /* Cor escura sobre o fundo claro/secundário */
+    margin: 10px 0;
+    transition: transform 0.3s ease;
+}
+
+.social-icon-hero:hover {
+    transform: scale(1.1);
+    color: var(--color-primary);
+}
+
+
+/* --- ========================================== Estilo para a seta (flecha) que indica o scroll ======================================================== --- */
+
+
+.scroll-down-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 49%;
+    top: 88%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    animation: bounce 2s infinite; /* Efeito de pulso */
+    font-size: 3rem; /* Tamanho maior para o ícone */
+    color: var(--color-dark); /* Cor escura para a seta */
+    transition: color 0.3s;
+}
+
+.scroll-down-arrow:hover {
+    color: var(--color-light); /* Muda a cor ao passar o mouse */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+/* Layout responsivo para (flecha) que indica o scroll  */
+@media (max-width: 991px) {
+   .scroll-down-arrow{
+    display: none;
+   }
+    
+
+}
+
+/* --- ========================================== Seção Sobre Mim (Cards) ======================================================== --- */
+ .bg-light-card {
+    background-color: #FFFFFF;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+
+.bg-light-card:hover {
+    transform: translateY(-5px); /* Efeito de "levantar" ao passar o mouse */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+} 
+
+/* --- ==================================================  Estilos para a Imagem na Seção Sobre Mim ======================================= --- */
+.profile-image-about {
+    /* Define um tamanho fixo para a imagem (ex: 200px) e garante responsividade */
+    width: 200px; 
+    height: 200px;
+    object-fit: cover; 
+    border: 5px solid var(--color-primary); /* Borda com a cor principal */
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-image-about:hover {
+    transform: scale(1.05);
+}
+
+.profile-intro-block {
+    padding-bottom: 40px;
+    border-bottom: 2px dashed #e0e0e0; /* Linha de separação discreta */
+    margin-bottom: 50px !important;
+}
+
+.profile-bio {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.profile-bio-detail {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+/* Responsividade: Centraliza a imagem e o texto em telas menores */
+@media (max-width: 767px) {
+    .profile-intro-block .col-md-4 {
+        text-align: center;
+    }
+    .profile-intro-block .col-md-8 {
+        text-align: center;
+    }
+    .profile-image-about {
+        margin-bottom: 20px;
+    }
+}
+
+/* --- ======================================================== Seção Skills (Implementação do CSS Grid) ====================================== --- */
+.skills-grid-container {
+    display: grid;
+    /* Define duas colunas de tamanho igual */
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.technical-skills-block, .soft-skills-block {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Layout responsivo para Skills: transforma em coluna única em telas pequenas */
+@media (max-width: 991px) {
+
+    .skills-grid-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .navbar-toggler-icon {
+        color: var(--color-light);
+        font-weight: bold !important;    
+    
+    }
+
+    
+}
+
+.skill-card {
+    background-color: #588B97; /* Fundo escuro para contraste */
+    color: var(--color-light);
+    padding: 15px;
+    border-radius: 6px;
+    height: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.skill-card h6 {
+    font-weight: 700;
+    color: var(--color-text-light);;
+}
+
+.skill-card small {
+    display: block;
+    color: var(--color-text-light);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.skills-icon {
+    font-size: 3rem;
+    color: var(--color-primary); /* Garante que o ícone tenha a cor de destaque */
+    margin-bottom: 15px;
+    display: block;
+}
+
+/* Linha do tempo de Soft Skills */
+.timeline-item {
+    border-left: 3px solid var(--color-secondary);
+    padding-left: 20px;
+    margin-bottom: 25px;
+    position: relative;
+    color: var(--color-text-light);
+}
+
+.timeline-item h6 {
+    color: var(--color-text-light);;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    border: 2px solid var(--color-dark);
+}
+
+
+
+/* --- Seção Projetos --- */
+.project-item:nth-child(even) .project-image-col {
+    order: 2; /* Inverte a ordem das colunas para os projetos pares (flex-lg-row-reverse é usado no HTML) */
+}
+
+.project-item:nth-child(odd) .project-image-col {
+    order: 1;
+}
+
+
+.project-ph {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.project-ph:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.project-image-col:hover .project-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30, 77, 110, 0.8); /* Cor primária com transparência */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+}
+
+.project-ph:hover .image-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+}
+
+.tech-badge {
+    background-color: #1a415c;
+    border-color: #1a415c;
+    color: var(--color-light);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.4em 0.8em;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+/* --- Seção Contato --- */
+.social-icon {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--color-dark);
+    transform: translateY(-5px);
+}
+
+.btn-outline-dark-custom {
+    color: var(--color-dark);
+    border-color: var(--color-dark);
+}
+
+.btn-outline-dark-custom:hover {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--color-dark);
+}
+
+footer p {
+    color: var(--color-text-light);
+    margin: 0;
+    font-size: 0.9rem;
+}
