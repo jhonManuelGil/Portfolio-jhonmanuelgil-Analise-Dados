@@ -70,7 +70,7 @@ section {
 /* Aumenta o tamanho da fonte em telas maiores (Desktop) */
 @media (min-width: 992px) {
     .hero-title {
-        font-size: 3.5rem !important; 
+        font-size: 3rem !important; 
     }
     .section-title {
         font-size: 3rem;
@@ -272,12 +272,12 @@ section {
     cursor: pointer;
     animation: bounce 2s infinite; /* Efeito de pulso */
     font-size: 3rem; /* Tamanho maior para o ícone */
-    color: var(--color-text-dark); /* Cor escura para a seta */
+    color: #173a53; /* Cor escura para a seta */
     transition: color 0.3s;
 }
 
 .scroll-down-arrow:hover {
-    color: var(--color-primary);
+    color: #375c64;
 }
 
 @keyframes bounce {
