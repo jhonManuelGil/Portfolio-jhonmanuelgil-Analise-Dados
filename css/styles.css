@@ -328,6 +328,9 @@ section {
 .profile-image-about:hover {
     transform: scale(1.05);
 }
+.rounded-circle {
+    border-radius: 2% 3% 2% 2% !important
+}
 
 .profile-intro-block {
     padding-bottom: 40px;
