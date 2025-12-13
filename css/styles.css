@@ -1,7 +1,7 @@
 /* Paleta de Cores Executivas e Cores da Imagem de Referência */
 :root {
-    --color-primary: #1E4D6E; /* Azul Escuro Executivo (Para botões e títulos) */
-    --color-secondary: #588B97; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
+    --color-primary: #096aaf; /* Azul Escuro Executivo (Para botões e títulos) */
+    --color-secondary: #0f0f0f; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
     --color-dark: #1A415C; /* Texto Escuro/Fundo do Footer */
     --color-light: #F8F9FA; /* Fundo Claro (body e seções leves) */
     --color-text-dark: #212529; /* Cor do texto principal */
@@ -51,7 +51,7 @@ section {
 }
 
 .bg-dark-custom {
-    background-color: var(--color-dark);
+    background-color: var(--color-secondary);
 }
 
 .bg-light-custom {
@@ -79,8 +79,14 @@ section {
 
 /* --- Navbar --- */
 .custom-navbar {
-    background-color: #1A415C;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.248);
+    font-size: 1rem;
+    background-color: #096aaf;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.248);   
+}
+
+.custom-navbar a{
+    text-transform: uppercase;
+    margin-right: 15px
 }
 
 .navbar-brand, .nav-link {
@@ -90,7 +96,7 @@ section {
 }
 
 .nav-link:hover {
-    color: #588B97 !important;
+    color: #0F0F0F !important;
     
 }
 
@@ -153,9 +159,9 @@ section {
 .hero-badge {   
     background: var(--color-primary);
     color: var(--color-light);
-    padding: 0.25rem 0.75rem;
+    padding: 0.45rem 0.95rem;
     border-radius: 50px;
-    font-size: 0.85rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -217,8 +223,9 @@ section {
 }
 @media (max-width: 540px) {
     .description-text {
-    font-size: 1rem;
-    font-weight: 400;
+        font: optional;
+        font-size: 1rem;
+        font-weight: 400;
     }
 
 }
@@ -251,14 +258,14 @@ section {
 .social-icon-hero {
     display: block;
     font-size: 2.5rem;
-    color: var(--color-dark); /* Cor escura sobre o fundo claro/secundário */
+    color: var(--color-primary); /* Cor escura sobre o fundo claro/secundário */
     margin: 10px 0;
     transition: transform 0.3s ease;
 }
 
 .social-icon-hero:hover {
     transform: scale(1.1);
-    color: var(--color-primary);
+    color: var(--color-light);
 }
 
 
@@ -274,7 +281,7 @@ section {
     cursor: pointer;
     animation: bounce 2s infinite; /* Efeito de pulso */
     font-size: 3rem; /* Tamanho maior para o ícone */
-    color: #173a53; /* Cor escura para a seta */
+    color: var(--color-primary); /* Cor escura para a seta */
     transition: color 0.3s;
 }
 
@@ -430,7 +437,7 @@ section {
 
 /* Linha do tempo de Soft Skills */
 .timeline-item {
-    border-left: 3px solid var(--color-secondary);
+    border-left: 3px solid #588B97;
     padding-left: 20px;
     margin-bottom: 25px;
     position: relative;
@@ -537,7 +544,7 @@ section {
 
 .social-icon:hover {
     transform: scale(1.1);
-    color: var(--color-primary);
+    color: var(--color-secondary);
 }
 
 .btn-outline-dark-custom {
