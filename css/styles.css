@@ -1,7 +1,7 @@
 /* Paleta de Cores Executivas e Cores da Imagem de Referência */
 :root {
     --color-primary: #096aaf; /* Azul Escuro Executivo (Para botões e títulos) */
-    --color-secondary: #0f0f0f; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
+    --color-secondary: #000000; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
     --color-dark: #1A415C; /* Texto Escuro/Fundo do Footer */
     --color-light: #F8F9FA; /* Fundo Claro (body e seções leves) */
     --color-text-dark: #212529; /* Cor do texto principal */
@@ -21,6 +21,7 @@ body {
     background-color: var(--color-light);
     padding-top: 56px; 
 }
+
 
 
 ::-webkit-scrollbar {
@@ -48,6 +49,12 @@ body {
 /* ============== section =========================================== */
 section {
     padding: 80px 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+section.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .bg-dark-custom {
@@ -66,59 +73,141 @@ section {
     color: var(--color-dark);
 }
 
+.mb-h3{ /* Classe personalizada para títulos h3 com margem inferior */
+    margin-bottom: 0.5rem;
+    color: var(--color-dark);
+}
+
 /* --- Tipografia Responsiva (Garante bom tamanho em todas as telas) --- */
 /* Aumenta o tamanho da fonte em telas maiores (Desktop) */
 @media (min-width: 992px) {
     .hero-title {
-        font-size: 3rem !important; 
+        font-size: 2.5rem !important; 
     }
     .section-title {
         font-size: 3rem;
     }
 }
+/*----------- elemento da navbar (Mobile) --------------- */
 
-/* --- Navbar --- */
+/* Estilos para la barra de navegación personalizada */
 .custom-navbar {
-    font-size: 1rem;
-    background-color: #096aaf;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.248);   
+    background-color: var(--color-primary); /* Fondo oscuro */
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.custom-navbar a{
-    text-transform: uppercase;
-    margin-right: 15px
-}
-
-.navbar-brand, .nav-link {
-    color: var(--color-light) !important;
+/* Estilo de los enlaces */
+.custom-navbar .nav-link {
+    color: white; /* Color de texto claro */
     font-weight: 800;
-   
+    margin-left: 15px;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
-.nav-link:hover {
-    color: #0F0F0F !important;
-    
+.custom-navbar .nav-link:hover {
+    color: var(--color-text-dark); /* Un azul para el hover */
+    transform: translateY(-2px); /* Efecto sutil al pasar el ratón */
 }
 
+/* Estilo para el navbar-brand (Logo/Título) */
+.custom-navbar .navbar-brand {
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+/* --- Toggler Personalizado (Botón de Hamburguesa) --- */
+
+/* Estilo base del botón toggler (para anular el color de Bootstrap) */
 .navbar-toggler {
-    border-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 0; /* Asegura que el icono sea el que determine el tamaño */
 }
 
-.navbar-toggler-icon {
-    /* filter: brightness(0) invert(1); Deixa o ícone do toggler branco */
-    color: var(--color-light);
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23FFFFFF' stroke-linecap='round' stroke-miterlimit='15' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.navbar-toggler:focus {
+    box-shadow: none; /* Eliminar el borde de enfoque por defecto */
+}
+
+/* Contenedor para el icono personalizado */
+.custom-toggler-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Líneas del icono de hamburguesa */
+.toggler-line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: white; /* Color de las líneas */
+    border-radius: 3px;
+    transition: all 0.3s ease; /* Transición para la animación */
+}
+
+/* --- Animación de Toggler (Icono X) --- */
+
+/* Clase que se añade con JavaScript/Bootstrap al estar expandido */
+.navbar-toggler[aria-expanded="true"] .custom-toggler-icon .toggler-line:nth-child(1) {
+    transform: translateY(13.5px) rotate(45deg); /* Línea superior a 45 grados */
+    background-color: rgb(255, 0, 0); 
+}
+
+.navbar-toggler[aria-expanded="true"] .custom-toggler-icon .toggler-line:nth-child(2) {
+    opacity: 0; /* Línea del medio desaparece */
+}
+
+.navbar-toggler[aria-expanded="true"] .custom-toggler-icon .toggler-line:nth-child(3) {
+    transform: translateY(-13.5px) rotate(-45deg); /* Línea inferior a -45 grados */
+    background-color: rgb(255, 0, 0); /* Mantiene el color blanco */
+}
+
+/* Media Query para el modo de escritorio (más de 992px) */
+/* Asegura que el toggler no ocupe espacio innecesario en escritorio */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none;
+    }
+}
+
+/* Ajustes de responsividad para la lista de enlaces en móvil */
+@media (max-width: 991.98px) {
+    .custom-navbar {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .custom-navbar{
+        flex-direction: column;
+        background-color: #0963a4;
+    }
+    .custom-navbar .navbar-nav {
+        text-align: center; /* Centrar los enlaces en móvil */
+        margin-top: 10px;
+        background-color: #0963a4db; /* Fondo para el menú desplegado */
+        padding: 10px 0;
+        border-radius: 5px;
+        opacity: 0.95;
+    }
+    .custom-navbar .nav-link {
+        margin-left: 0;
+        padding: 10px 0;
+    }
 }
 
 
 /* --- Hero Section (Inspirada na Imagem de Fundo) --- */
 
-
 .hero-section {
     /* Mantenemos tus estilos de fondo y altura mínima */
     background-color: var(--color-secondary);
     color: var(--color-light); 
-    min-height: 100vh;
+    min-height: 94vh;
     
     /* Configuración de Flexbox para centralización total */
     display: flex;
@@ -126,7 +215,7 @@ section {
     justify-content: center; /* Centra verticalmente */
     align-items: center; /* Centra horizontalmente el contenedor principal */
     
-    padding-top: 80px;
+    padding-top: 4px;
     padding-bottom: 80px;
     text-align: center; /* Centra el texto dentro del bloque */
 }
@@ -159,9 +248,9 @@ section {
 .hero-badge {   
     background: var(--color-primary);
     color: var(--color-light);
-    padding: 0.45rem 0.95rem;
+    padding: 0.10rem 0.75rem;
     border-radius: 50px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
@@ -228,6 +317,28 @@ section {
         font-weight: 400;
     }
 
+    .hero-section{
+        padding-top: 2px;
+        padding-bottom: 60px;
+        font-size: 0.8;
+    }
+
+     .hero-title {
+    font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-top: 5px;
+    }
+
+    .description-text {
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    }
+
+
 }
 
 /* Layout responsivo para (flecha) que indica o scroll  */
@@ -236,10 +347,6 @@ section {
         font-size: 13px;
     }
     
-    .hero-title {
-    font-size: 2rem;
-    }
-
     .description-text {
     font-size: 0.9rem;
     }
@@ -286,7 +393,7 @@ section {
 }
 
 .scroll-down-arrow:hover {
-    color: #375c64;
+    color: #ffffff;
 }
 
 @keyframes bounce {
@@ -390,19 +497,11 @@ section {
     .skills-grid-container {
         grid-template-columns: 1fr;
         gap: 50px;
-    }
-
-    .navbar-toggler-icon {
-        color: var(--color-light);
-        font-weight: bold !important;    
-            
-    }
-
-    
+    }    
 }
 
 .skill-card {
-    background-color: #588B97; /* Fundo escuro para contraste */
+    background-color: var(--color-primary); /* Fundo escuro para contraste */
     color: var(--color-light);
     padding: 15px;
     border-radius: 6px;
@@ -429,7 +528,7 @@ section {
 
 
 .skills-icon {
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--color-primary); /* Garante que o ícone tenha a cor de destaque */
     margin-bottom: 15px;
     display: block;
@@ -437,7 +536,7 @@ section {
 
 /* Linha do tempo de Soft Skills */
 .timeline-item {
-    border-left: 3px solid #588B97;
+    border-left: 3px solid var(--color-primary);
     padding-left: 20px;
     margin-bottom: 25px;
     position: relative;
@@ -445,7 +544,7 @@ section {
 }
 
 .timeline-item h6 {
-    color: var(--color-text-light);;
+    color: var(--color-text-light);
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -459,7 +558,7 @@ section {
     height: 15px;
     background-color: var(--color-secondary);
     border-radius: 50%;
-    border: 2px solid var(--color-dark);
+    border: 2px solid var(--color-light);
 }
 
 

@@ -30,18 +30,29 @@
     
     <title>Jhon Manuel Gil | Data Engineer & Análise de Dados | Portfólio</title>
 </head>
-<body id="PORTF">
-    
+<body>
+     <!-- Contenedor para efecto de vómito expandido -->
+    <div id="vomit-container-expanded" class="vomit-container-expanded"></div>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top custom-navbar" id="button-home">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#button-home">PORTFÓLIO</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+            <a class="navbar-brand fw-bold" href="#home">PORTFÓLIO</a>
+            
+            <!-- Botón toggler personalizado -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="customToggler">
+                <div class="custom-toggler-icon">
+                    <span class="toggler-line"></span>
+                    <span class="toggler-line"></span>
+                    <span class="toggler-line"></span>
+                </div>
             </button>
+            
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                        <a class="nav-link" href="#home" >Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#sobre">Sobre</a>
@@ -117,7 +128,7 @@
                         </p>
                         <p class="profile-bio-detail">
                             Possuo <b>4 anos de experiência</b> em telemarketing bilíngue (espanhol), atuando como Senior Back Office para multinacionais como 
-                            <b>GE HealthCare</b>, <b>Google</b>, <b>DElL</b> e <b>Meta</b>, o que me proporcionou habilidades sólidas em comunicação eficaz, 
+                            <b>GE HealthCare</b>, <b>Google</b>, <b>DEL</b> e <b>Meta</b>, o que me proporcionou habilidades sólidas em comunicação eficaz, 
                             empatia, pensamento analítico e <b>resolução de problemas</b>.
                         </p>
                     </div>
@@ -206,7 +217,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h3 class="mb-3" style="color: var(--color-primary);">Pipeline ETL com Python e SQL</h3>
+                    <h3 class="mb-h3">Pipeline ETL com Python e SQL</h3>
                     <p class="lead">Criação de um Pipeline de Extração, Transformação e Carga (ETL) automatizado para processar grandes volumes de dados de vendas de e-commerce.</p>
                     <p>O projeto envolveu a limpeza e normalização dos dados usando <b>Pandas</b> e <b>SQL</b>, e o carregamento final em um Data Warehouse. Foco na qualidade dos dados e na eficiência do processamento.</p>
 
@@ -239,7 +250,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <h3 class="mb-3" style="color: var(--color-primary);">Análise de Churn e Visualização em Power BI</h3>
+                    <h3 class="mb-h3">Análise de Churn e Visualização em Power BI</h3>
                     <p class="lead">Análise preditiva e descritiva do Churn (abandono de clientes) em uma empresa de telecomunicações, culminando em um dashboard interativo.</p>
                     <p>Aplicação prática de técnicas de BI, desde a coleta de dados, passando pela modelagem <b>(DAX)</b> até a visualização final, permitindo à gestão identificar os fatores de risco.</p>
 
