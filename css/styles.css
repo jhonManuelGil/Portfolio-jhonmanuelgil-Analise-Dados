@@ -52,6 +52,7 @@ section {
     transform: translateY(20px);
     transition: all 0.6s ease;
 }
+
 section.active {
     opacity: 1;
     transform: translateY(0);
@@ -99,6 +100,7 @@ section.active {
 
 /* Estilo de los enlaces */
 .custom-navbar .nav-link {
+    font-size: 1.1rem;
     color: white; /* Color de texto claro */
     font-weight: 800;
     margin-left: 15px;
@@ -115,6 +117,20 @@ section.active {
     color: white;
     font-size: 1.5rem;
     letter-spacing: 1px;
+}
+
+.navbar-indicator {
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  background-color: #FFD166;
+  border-radius: 999px;
+
+  /* Animación muy suave */
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, width;
 }
 
 /* --- Toggler Personalizado (Botón de Hamburguesa) --- */
