@@ -56,43 +56,47 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Script para o botão do WhatsApp
 
+
 document.addEventListener('DOMContentLoaded', function () {
 
     /**
-     * Redirección segura a WhatsApp.
-     * - Funciona para TODOS los botones con clase .whatsappBtn
-     * - El número no aparece en el HTML
+     * Redirección inteligente a WhatsApp
+     * 1️⃣ Intenta abrir WhatsApp Desktop / App
+     * 2️⃣ Si no existe, abre WhatsApp Web
      
      */
 
-    const whatsappButtons = document.querySelectorAll('.whatsappBtn');
-    if (!whatsappButtons.length) return;
+    const buttons = document.querySelectorAll('.whatsappBtn');
+    if (!buttons.length) return;
 
-    whatsappButtons.forEach(btn => {
+    buttons.forEach(btn => {
         btn.addEventListener('click', function (e) {
             e.preventDefault();
 
             
-            const p = String.fromCharCode(53, 53);
-
-            
-            const d = String.fromCharCode(49, 49);
-
-           
-            const n1 = String.fromCharCode(57, 53, 56, 56, 51);
-
-            
-            const n2 = String.fromCharCode(56, 55, 56, 50);
-
-          
+            const p  = String.fromCharCode(53, 53);        
+            const d  = String.fromCharCode(49, 49);       
+            const n1 = String.fromCharCode(57,53,56,56,51); 
+            const n2 = String.fromCharCode(56,55,56,50);  
             const phone = p + d + n1 + n2;
 
             const message = encodeURIComponent(
-                'Olá! Vim pelo seu site 🌐 de Análise de Dados e gostaria de mais informações.'
+                'Olá! Vim pelo seu site e gostaria de mais informações.'
             );
 
-            // Abre WhatsApp App / Web automáticamente
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            // Enlace APP (Desktop / Mobile)
+            const appLink = `whatsapp://send?phone=${phone}&text=${message}`;
+
+            // Enlace WEB (fallback)
+            const webLink = `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+            // Intentar abrir APP
+            window.location.href = appLink;
+
+            // Si no se abre (desktop/web), fallback en 800ms
+            setTimeout(() => {
+                window.open(webLink, '_blank');
+            }, 800);
         });
     });
 
