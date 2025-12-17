@@ -51,6 +51,49 @@ document.addEventListener('DOMContentLoaded', function () {
                 bsCollapse.hide();
             }
         });
+    })
+});  
+
+// Script para o botão do WhatsApp
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    /**
+     * Redirección segura a WhatsApp.
+     * - Funciona para TODOS los botones con clase .whatsappBtn
+     * - El número no aparece en el HTML
+     
+     */
+
+    const whatsappButtons = document.querySelectorAll('.whatsappBtn');
+    if (!whatsappButtons.length) return;
+
+    whatsappButtons.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            
+            const p = String.fromCharCode(53, 53);
+
+            
+            const d = String.fromCharCode(49, 49);
+
+           
+            const n1 = String.fromCharCode(57, 53, 56, 56, 51);
+
+            
+            const n2 = String.fromCharCode(56, 55, 56, 50);
+
+          
+            const phone = p + d + n1 + n2;
+
+            const message = encodeURIComponent(
+                'Olá! Vim pelo seu site 🌐 de Análise de Dados e gostaria de mais informações.'
+            );
+
+            // Abre WhatsApp App / Web automáticamente
+            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        });
     });
 
 });

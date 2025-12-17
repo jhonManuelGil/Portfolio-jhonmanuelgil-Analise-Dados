@@ -1,6 +1,6 @@
 /* Paleta de Cores Executivas e Cores da Imagem de Referência */
 :root {
-    --color-primary: #096aaf; /* Azul Escuro Executivo (Para botões e títulos) */
+    --color-primary: #0b9bfc; /* Azul Escuro Executivo (Para botões e títulos) */
     --color-secondary: #000000; /* Azul Ciano/Água (Cor de fundo da Hero Section na imagen) */
     --color-dark: #1A415C; /* Texto Escuro/Fundo do Footer */
     --color-light: #F8F9FA; /* Fundo Claro (body e seções leves) */
@@ -14,15 +14,11 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: var(--color-text-dark);
-    line-height: 1.6;
-    background-color: var(--color-light);
-    padding-top: 56px; 
+
+
+b{
+    color: var(--color-primary);
 }
-
-
 
 ::-webkit-scrollbar {
     width: 12px; 
@@ -51,6 +47,7 @@ section {
     padding: 80px 0;
     transform: translateY(20px);
     transition: all 0.6s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 section.active {
@@ -223,7 +220,7 @@ section.active {
     /* Mantenemos tus estilos de fondo y altura mínima */
     background-color: var(--color-secondary);
     color: var(--color-light); 
-    min-height: 94vh;
+    min-height: 100vh;
     
     /* Configuración de Flexbox para centralización total */
     display: flex;
@@ -264,7 +261,7 @@ section.active {
 .hero-badge {   
     background: var(--color-primary);
     color: var(--color-light);
-    padding: 0.10rem 0.75rem;
+    padding: 0.10rem 0.99rem;
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -288,9 +285,9 @@ section.active {
 }
 
 .btn-primary-custom:hover {
-    background-color: #1a415c;
+    background-color: var(--color-text-light);
     border-color: #1a415c;
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .btn-outline-light-custom {
@@ -638,7 +635,7 @@ section.active {
 }
 
 .tech-badge {
-    background-color: #1a415c;
+    background-color: var(--color-primary);
     border-color: #1a415c;
     color: var(--color-light);
     font-size: 0.85rem;
@@ -665,21 +662,70 @@ section.active {
 .btn-outline-dark-custom {
     color: var(--color-dark);
     border-color: var(--color-dark);
-        margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .btn-outline-dark-custom:hover {
-    background-color: var(--color-dark);
-    color: var(--color-light);
+    background-color: var(--color-primary);
+    border-color: #0b609ca4;
+    color: var(--color-text-light);
 }
+
 
 /* --- Footer --- */
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px; /* Cambiado a min-height */
     background-color: var(--color-dark);
+    padding: 20px 10px; /* Aumentado padding vertical */
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    bottom: 0;
+    left: 0;
 }
 
-footer p {
+footer > div {
+    max-width: 1200px; /* Ancho máximo para contenido */
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {    
+    text-align: center;
     color: var(--color-text-light);
     margin: 0;
-    font-size: 0.9rem;
+    padding: 5px 0;
+    line-height: 1.5;
+    font-size: clamp(14px, 2vw, 16px); /* Tamaño responsivo */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 10px;
+        min-height: 50px;
+    }
+    
+    footer p {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 12px 8px;
+        min-height: auto;
+    }
+    
+    footer p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
 }
