@@ -56,48 +56,100 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Script para o botão do WhatsApp
 
-
-document.addEventListener('DOMContentLoaded', function () {
-
+document.addEventListener('DOMContentLoaded', () => {
     /**
-     * Redirección inteligente a WhatsApp
-     * 1️⃣ Intenta abrir WhatsApp Desktop / App
-     * 2️⃣ Si no existe, abre WhatsApp Web
-     
+     * WhatsApp seguro y universal
+     * - Abre WhatsApp APP en dispositivos móviles
+     * - Abre WhatsApp Web en escritorio
+     * - Funciona con múltiples botones
+     * - Ofusación mejorada del número
      */
 
-    const buttons = document.querySelectorAll('.whatsappBtn');
-    if (!buttons.length) return;
+    const whatsappButtons = document.querySelectorAll('.whatsappBtn');
+    
+    if (!whatsappButtons.length) {
+        console.warn('No se encontraron botones de WhatsApp');
+        return;
+    }
 
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
+    // Configuración centralizada (fácil de mantener)
+    const WHATSAPP_CONFIG = {
+      
+        phoneNumber: () => {
+            const parts = [
+                String.fromCodePoint(0x35, 0x35),     
+                String.fromCodePoint(0x31, 0x31),     
+                String.fromCodePoint(0x39, 0x35, 0x38, 0x38, 0x33), 
+                String.fromCodePoint(0x38, 0x37, 0x38, 0x32)        
+            ];
+            return parts.join('');
+        },
+        defaultMessage: 'Olá! Vim pelo seu site Análise de Dados e gostaria de mais informações.',
+        // Patrones mejorados para detección de móviles
+        mobilePatterns: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i,
+        urls: {
+            mobile: (phone, message) => `whatsapp://send?phone=${phone}&text=${message}`,
+            desktop: (phone, message) => `https://web.whatsapp.com/send?phone=${phone}&text=${message}`
+        }
+    };
 
+    // Función para detectar si es dispositivo móvil
+    const isMobileDevice = () => WHATSAPP_CONFIG.mobilePatterns.test(navigator.userAgent);
+
+    // Función para generar la URL de WhatsApp
+    const generateWhatsAppUrl = (phone, message = WHATSAPP_CONFIG.defaultMessage) => {
+        const encodedMessage = encodeURIComponent(message);
+        const urlGenerator = isMobileDevice() 
+            ? WHATSAPP_CONFIG.urls.mobile 
+            : WHATSAPP_CONFIG.urls.desktop;
+        
+        return urlGenerator(phone, encodedMessage);
+    };
+
+    // Función manejadora del clic
+    const handleWhatsAppClick = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        try {
+            const phone = WHATSAPP_CONFIG.phoneNumber();
+            const url = generateWhatsAppUrl(phone);
             
-            const p  = String.fromCharCode(53, 53);        
-            const d  = String.fromCharCode(49, 49);       
-            const n1 = String.fromCharCode(57,53,56,56,51); 
-            const n2 = String.fromCharCode(56,55,56,50);  
-            const phone = p + d + n1 + n2;
+            // Abrir en nueva pestaña (mejor UX para escritorio)
+            const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+            
+            // Seguridad: prevenir posibles vulnerabilidades
+            if (newWindow) {
+                newWindow.opener = null;
+            }
+            
+            // Opcional: tracking de analytics
+            console.log('WhatsApp click tracked:', { phone, isMobile: isMobileDevice() });
+            
+        } catch (error) {
+            console.error('Error al abrir WhatsApp:', error);
+            // Fallback: abrir WhatsApp Web como último recurso
+            const fallbackUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_CONFIG.phoneNumber()}`;
+            window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+    };
 
-            const message = encodeURIComponent(
-                'Olá! Vim pelo seu site e gostaria de mais informações.'
-            );
-
-            // Enlace APP (Desktop / Mobile)
-            const appLink = `whatsapp://send?phone=${phone}&text=${message}`;
-
-            // Enlace WEB (fallback)
-            const webLink = `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
-
-            // Intentar abrir APP
-            window.location.href = appLink;
-
-            // Si no se abre (desktop/web), fallback en 800ms
-            setTimeout(() => {
-                window.open(webLink, '_blank');
-            }, 800);
-        });
+    // Añadir event listeners a todos los botones
+    whatsappButtons.forEach(button => {
+        // Prevenir múltiples listeners (en caso de SPA o re-render)
+        button.removeEventListener('click', handleWhatsAppClick);
+        button.addEventListener('click', handleWhatsAppClick);
+        
+        // Mejorar accesibilidad
+        button.setAttribute('role', 'button');
+        button.setAttribute('aria-label', button.getAttribute('aria-label') || 'Contactar por WhatsApp');
     });
 
+    // Opcional: Exportar función para uso programático
+    window.openWhatsApp = (customMessage = '') => {
+        const phone = WHATSAPP_CONFIG.phoneNumber();
+        const message = customMessage || WHATSAPP_CONFIG.defaultMessage;
+        const url = generateWhatsAppUrl(phone, message);
+        window.open(url, '_blank', 'noopener,noreferrer');
+    };
 });
